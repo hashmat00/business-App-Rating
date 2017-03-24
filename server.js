@@ -3,9 +3,15 @@ var cookieParser = require("cookie-parser");
 var bodyParser   = require("body-parser");
 var ejs          = require("ejs");
 var engine        = require("ejs-mate");
+var mongoose      = require("mongoose");
 var session       = require("express-session");
+var MongoStore    = require("connect-mongo")(session);
+
 
 var app        = express();
+mongoose.connect('mongodb://localhost/business');
+
+
 
 app.use(express.static('public'));
 app.engine('ejs', engine);
@@ -15,9 +21,33 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 
+// app.use(session({
+//   sercret: 'Thisismytestkey',
+//   resave: false,
+//   saveUninitialized: false,
+app.use(require("express-session")({
+    secret: "Rusty is the best and cutest dog in the world",
+    resave: false,
+    saveUninitialized: false,
+  store: new  MongoStore({mongooseConnection: mongoose.connection})
+}));
+
+
+
+
+
+// ====== ROUTES ===========
 app.get('/', function(req, res){
     res.render('index');
 });
+
+
+app.get('/test', function(req, res){
+  res.render('test');
+});
+
+
+
 
 
 
