@@ -37,21 +37,16 @@ app.use(require("express-session")({
 
 
 // ====== ROUTES ===========
-app.get('/', function(req, res){
-    res.render('index');
-});
-
-
-app.get('/test', function(req, res){
-  res.render('test');
-});
+require('./routes/user')(app);
 
 
 
 
 
 
-app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
+
+
+app.listen(process.env.PORT || 3000, process.env.IP, function(){
   // var addr = app.address();
   // console.log("Chat server listening at", addr.address + ":" + addr.port);
   console.log('Server has started');
