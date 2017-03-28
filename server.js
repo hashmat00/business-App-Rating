@@ -48,7 +48,7 @@ app.use(passport.session());
 
 
 // ====== ROUTES ===========
-require('./routes/user')(app);
+require('./routes/user')(app, passport);
 
 
 

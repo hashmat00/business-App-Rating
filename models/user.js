@@ -1,4 +1,7 @@
 var mongoose = require("mongoose");
+var bcrypt  = require("bcrypt-nodejs");
+
+var passportLocalMongoose = require('passport-local-mongoose');
 
 
 var userSchema = mongoose.Schema({
@@ -16,6 +19,16 @@ var userSchema = mongoose.Schema({
     
     
 });
+
+
+//======== USe passportLocalMOngoose to encrypt password =================
+// UserSchema.plugin(passportLocalMongoose);
+
+
+//======== USe bcrypt to encrypt password =================
+userSchema.methods.encryptPassword = (password) => {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(10, null))
+}
 
 
 module.exports = mongoose.model('User', userSchema);
