@@ -1,6 +1,5 @@
 <% layout('layout') %>
-
-
+   
 
 <div class="container">
     <br><br>
@@ -9,7 +8,7 @@
     </div>
    <br><br>
    
-    <div class="col-md-offset">
+   <div class="col-md-offset-4">
          <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook btn-lg">
             <i class="fa fa-facebook"></i> Sign up with Facebook
         </a>
@@ -21,6 +20,18 @@
    </div><br>
 
     <div class="row signup">
+        
+        <% if(hasErrors) {%>
+            <% for(var i = 0; i <messages.length; i++) {%>
+                <div class="alert alert-danger">
+                   <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                       &times;
+                   </a>
+                   <%= messages[i] %>
+                    
+                </div>
+            <% } %>
+        <% } %>
 
         <form method="POST" class="" id="signupForm" action="/signup">
 

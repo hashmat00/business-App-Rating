@@ -1,6 +1,7 @@
 var express    = require("express");
 var cookieParser = require("cookie-parser");
 var bodyParser   = require("body-parser");
+var validator    = require("express-validator");
 var ejs          = require("ejs");
 var engine        = require("ejs-mate");
 var mongoose      = require("mongoose");
@@ -23,10 +24,12 @@ require('./config/passport');
 app.use(express.static('public'));
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
+
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+app.use(validator());
 
 // app.use(session({
 //   sercret: 'Thisismytestkey',
