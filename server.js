@@ -65,7 +65,7 @@ require('./routes/user')(app, passport);
 
 
 //============= RUN SERVER ========================
-app.listen(process.env.PORT || 3000, process.env.IP, function(){
+app.listen(process.env.PORT, process.env.IP, function(){
   // var addr = app.address();
   // console.log("Chat server listening at", addr.address + ":" + addr.port);
   console.log('Server has started');

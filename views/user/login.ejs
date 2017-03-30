@@ -1,6 +1,5 @@
 <% layout('layout') %>
-
-
+   
 
 <div class="container">
     <br><br>
@@ -9,19 +8,21 @@
     </div>
    <br><br>
    
-   <div class="col-md-offset">
+   <div class="col-md-offset-4">
          <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook btn-lg">
-            <i class="fa fa-facebook"></i> Sign up with Facebook
+            <i class="fa fa-facebook"></i> Login with Facebook
         </a>
     </div><br>
-    
-    
 
+
+   <div class="text-center reg_msg">
+        <h2 class="fancy"><span>Login</span></h2>
+   </div><br>
 
     <div class="row signup">
         
         <% if(hasErrors) {%>
-            <% for(var i = 0; i <messages.length; i++) {%>
+            <% for(var i = 0; i < messages.length; i++) {%>
                 <div class="alert alert-danger">
                    <a href="#" class="close" data-dismiss="alert" aria-label="close">
                        &times;
@@ -32,16 +33,7 @@
             <% } %>
         <% } %>
 
-
-   <div class="text-center reg_msg">
-        <h2 class="fancy"><span>Login</span></h2>
-   </div><br>
-
-    <div class="row signup">
-
-        <form method="POST" class=""  action="/login">
-
-           
+        <form method="POST" action="/login">
 
             <div class="form-group input_group">
                 <input id="email" class="form-control" name="email" type="text" autocomplete="on" placeholder="EMAIL" style="margin-bottom:20px;">
@@ -53,13 +45,20 @@
 
 
             <div class="form-group">
-                <input type="submit" id="submit" value="login" class="form-control btn btn-primary" name="submit" style="">
+                <input type="submit" id="login" value="LOGIN" class="form-control btn btn-primary" name="login" style="">
+            </div>
+            
+            <div class="form-group">
+                <label for="">
+                    <input type="checkbox" name="rememberme" class="" value="yes">
+                </label>&nbsp;&nbsp;Remember Me
             </div>
 
           </form>
 
           <div>
-              <h4>Don't have an account? <a href="/signup">Sign Up</a></h4>
+              <h4 class="pull-left">Don't have an account? <a href="/signup">Sign Up</a></h4>
+              <h4 class="pull-right"><a href="/forgot">Forgot Your Password?</a></h4>
           </div>
 
 

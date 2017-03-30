@@ -1,4 +1,11 @@
-// var passport      = require("passport");
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
+var async = require('async');
+
+var crypto = require('crypto');
+var User = require('../models/user');
+
+
 
 module.exports = (app, passport) => {
     
@@ -13,7 +20,7 @@ module.exports = (app, passport) => {
         res.render('user/signup', {title: 'Sign Up || RateMe', messages: errors, hasErrors: errors.length > 0});
     });
     
-    app.post('/signup',validate, passport.authenticate('local.signup', {
+    app.post('/signup', validate, passport.authenticate('local.signup', {
         successRedirect: '/',
         failureRedirect: '/signup',
         failureFlash: true
@@ -35,7 +42,22 @@ module.exports = (app, passport) => {
         res.render('home', {title: 'Home || RateMe'});
     });
     
+     app.get('/forgot', (req, res) => {
+        var errors = req.flash('error');
+        
+        var info = req.flash('info');
+        
+		res.render('user/forgot', {title: 'Request Password Reset', messages: errors, hasErrors: errors.length > 0, info: info, noErrors: info.length > 0});
+	});
+    
+    
+    
+    
 };
+
+
+
+
 
 
 function LoginValidate(req, res, next){
