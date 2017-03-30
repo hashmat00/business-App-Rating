@@ -14,6 +14,7 @@ var app        = express();
 
 
 //========== CONNECT DATABASE ========================
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/business');
 
 require('./config/passport');

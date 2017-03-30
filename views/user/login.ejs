@@ -14,6 +14,23 @@
             <i class="fa fa-facebook"></i> Sign up with Facebook
         </a>
     </div><br>
+    
+    
+
+
+    <div class="row signup">
+        
+        <% if(hasErrors) {%>
+            <% for(var i = 0; i <messages.length; i++) {%>
+                <div class="alert alert-danger">
+                   <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                       &times;
+                   </a>
+                   <%= messages[i] %>
+                    
+                </div>
+            <% } %>
+        <% } %>
 
 
    <div class="text-center reg_msg">
